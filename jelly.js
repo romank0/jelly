@@ -331,7 +331,7 @@
 
   level = parseInt(location.search.substr(1), 10) || 0;
 
-  stage = new Stage(document.getElementById('stage'), levels[level]);
+  stage = new Stage(document.getElementById('map'), levels[level]);
 
   window.stage = stage;
 
@@ -341,6 +341,11 @@
 
   levelPicker.addEventListener('change', function() {
     return location.search = '?' + levelPicker.value;
+  });
+
+  document.getElementById('reset').addEventListener('click', function() {
+    stage.dom.innerHTML = '';
+    return stage = new Stage(stage.dom, levels[level]);
   });
 
 }).call(this);
